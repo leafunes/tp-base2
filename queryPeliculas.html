@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>La pagina</title>
+		<css
+	</head>
+	<body>
+
+	<h1>Usuarios que vieron las mismas peliculas</h1>
+	<table style="border: 1px solid black;">
+		<thead >
+			<th style="border: 1px solid black;">
+				Nombre 1
+			</th >
+			<th style="border: 1px solid black;">
+				Nombre 2
+			</th>
+		</thead>
+		<tbody id="tableResults">
+		</tbody>
+	</table>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		$(function() {
+			$.post('./queryPeliculas.php', function(res) {
+					
+					var rows = "";
+					var jsonObj = JSON.parse(res);
+					jsonObj.forEach(function(o) {
+						rows += "<tr>" + "<td>" + o.nombre1 +"</td>" + "<td>" + o.nombre2+"</td>" + "</tr>";
+
+					});
+					$("#tableResults").html(rows);
+				});
+		});
+
+	</script>
+	</body>
+</html>
