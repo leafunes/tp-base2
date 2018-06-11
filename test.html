@@ -13,7 +13,7 @@
 
 		<div>
 			<button onclick="login()">Login</button>
-			<button>Signup</button>
+			<button  onclick="gotoSingup()">Signup</button>
 		</div>
 	<script type="text/javascript">
 			function login() {
@@ -23,9 +23,15 @@
 				$.post('./test.php', {user:userVal, psw:pwdVal},function(res) {
 						if(res == 1)
 							document.location = "./query.html";
+						else
+							alert("Invalid user or password");
 
 				});
 
+			}
+			function gotoSingup() {
+				
+				document.location = "./signup.html";
 			}
 
 		</script>
