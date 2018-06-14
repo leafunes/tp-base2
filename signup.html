@@ -24,15 +24,16 @@
 					return;
 				}
 				$.post('./signup.php', {user:userVal, psw:pwdVal},function(res) {
-					
-					if(res != 0){
+					var jsonObj = JSON.parse(res);
+					if(jsonObj.count){
 
 						alert("Username already used");
 
 					}
 
 					else{
-						document.location = "./query.html";
+						document.cookie = "userGuid=" + jsonObj.guid;
+						document.location = "./queryPeliculas.html";
 					}
 				});
 			}

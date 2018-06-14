@@ -21,10 +21,18 @@
 				var userVal = $("#user").val();
 				var pwdVal = $("#psw").val();
 				$.post('./test.php', {user:userVal, psw:pwdVal},function(res) {
-						if(res == 1)
-							document.location = "./query.html";
-						else
-							alert("nvalid user or password");
+					var jsonObj = JSON.parse(res);
+					console.log(jsonObj);
+					if(jsonObj.count == 0){
+
+						alert("Invalid user or password");
+
+					}
+
+					else{
+						document.cookie = "userGuid=" + jsonObj.guid;
+						document.location = "./queryPeliculas.html";
+					}
 
 				});
 

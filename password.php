@@ -1,15 +1,13 @@
 <?php
 
-	$user = $_POST["user"];
 	$psw = $_POST["psw"];
-	$guid = bin2hex(openssl_random_pseudo_bytes(16));
+	$guid = $_POST["guid"];
 
-	$where = 'WHERE nombre=\''.$user.'\' and psw=\''.md5($psw).'\'';
+	$where = 'WHERE guid=\''.$guid.'\'';
 	$dbcon = pg_connect("host=localhost dbname=tp user=postgres
 		port=5434");
-	$userQuery = 'SELECT count(*) from usuarios '.$where;
 
-	$insertQuery = 'UPDATE usuarios SET guid=\''.$guid.'\''.$where;
+	$insertQuery = 'UPDATE usuarios SET psw=\''.$psw.'\''.$where;
 
 	$result = pg_query($userQuery);
 	$line = pg_fetch_array($result, null, PGSQL_ASSOC);

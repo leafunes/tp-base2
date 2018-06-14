@@ -6,6 +6,8 @@
 	</head>
 	<body>
 
+	<button onClick="gotoChangePsw()">Change Password</button>
+
 	<h1>Usuarios que vieron las mismas peliculas</h1>
 	<table style="border: 1px solid black;">
 		<thead >
@@ -35,6 +37,10 @@
 					$("#tableResults").html(rows);
 				});
 		});
+
+		function gotoChangePsw() {
+			document.location = './password.html';
+		}
 
 	</script>
 	</body>
